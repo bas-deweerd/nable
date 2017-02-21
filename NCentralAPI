@@ -1,0 +1,38 @@
+<?php
+/**
+ * Class which allows communication with the Ncentral API.
+ */
+class NCentralAPI {
+    private $username;
+    private $password;
+    private $soapClient;
+    
+    public function __construct($username, $password, $server) {
+        $this->username = $username;
+        $this->password = $password;
+        $wsdl = 'https://' . $server .'/dms2/services2/ServerEI2?wsdl';
+        $this->soapClient = new Soapclient($wsdl,
+            array(
+                'soap_version' => SOAP_1_2,
+                'trace' => TRUE
+            )
+        );    
+    }
+
+    /**
+     * Gets a list of all the devices corresponsding to the ID of the user.
+     * @param User's id to get devices from $id
+     * @return type
+     */
+    public function getDevices(){
+        $params = array(
+            'username' => $this->username,
+            'password' => $this->password,
+            'settings' => array(
+                array('key' => 'customerID', 'value' => '50') // ID is unknown, 50 is hardcoded
+                )
+        );
+        return $this->soapClient->deviceList($params);
+    }
+}
+?>
