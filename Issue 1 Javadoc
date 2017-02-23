@@ -32,3 +32,32 @@
  // #2 C:\xampp\htdocs\NcentralAPI\soapAPICaller.php(9): NCentralAPI->getActiveIssues()
  // #3 C:\xampp\htdocs\NcentralAPI\index.php(10): include('C:\\xampp\\htdocs...')
  // #4 {main} thrown in C:\xampp\htdocs\NcentralAPI\NCentralAPI.php on line 163
+
+
+// This block of code :
+    $server = 'ncentral.weritech.nl';
+    $username = ''; // removed for demo purposes
+    $password = ''; // removed for demo purposes
+    $array = getActiveIssues()->return;
+    foreach ($array as $item){
+        foreach ($item->issue as $contentitem){
+            if($contentitem->key == "activeissue.devicename"){
+                echo "Device with active issue: " . $contentitem->value . "<br />";
+            }
+        }
+    }
+    
+// Returns the following HTML output succesfully  :
+Device with active issue: Videowall - PRTG / SCOM (Hyper-V)
+Device with active issue: Videowall - SCOM (SQL - Exchange)
+Device with active issue: Videowall - Weritech monitors
+Device with active issue: DT-VWNUC-01
+Device with active issue: Videowall - Pingdom - NUC
+Device with active issue: Videowall - Pingdom Monitors
+Device with active issue: Videowall - Pingdom Monitors
+Device with active issue: Videowall - Pingdom Monitors
+Device with active issue: Videowall - Pingdom Monitors
+Device with active issue: Videowall - Pingdom Monitors
+Device with active issue: Videowall - Pingdom Monitors
+Device with active issue: Videowall - Pingdom Monitors
+Device with active issue: Videowall - Pingdom Monitors
