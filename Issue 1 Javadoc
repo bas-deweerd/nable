@@ -1,0 +1,34 @@
+// TODO: Attempt to login & recreate with productadmin credentials 
+ 
+ // Succesfully returns a list of issues corresponding to customer with ID 152
+ public function getActiveIssues(){
+  $params = array(
+    'username' => $this->username,
+    'password' => $this->password,
+    'settings' => array(
+      array('key' => 'customerid', 'value' => '152') 
+    )
+  );
+  return $this->soapClient->activeIssuesList($params); // <-- Javadoc method activeIssuesList() being called 
+ }
+ 
+ // This method SHOULD return active issues corresponding to all SOs/customers/sites
+ public function getActiveIssues(){
+  $params = array(
+    'username' => $this->username,
+    'password' => $this->password,
+    'settings' => array(
+      array('key' => 'customerid', 'value' => '1')
+    )
+  );
+  return $this->soapClient->activeIssuesList($params); // <-- line 163 in my code
+ }
+ 
+ // Throws the following exception instead:
+ // Fatal error: Uncaught SoapFault exception: [soap:Receiver] 1013 Invalid customerID - 1 in 
+ // C:\xampp\htdocs\NcentralAPI\NCentralAPI.php:163 Stack trace: 
+ // #0 C:\xampp\htdocs\NcentralAPI\NCentralAPI.php(163): SoapClient->__call('activeIssuesLis...', Array) 
+ // #1 C:\xampp\htdocs\NcentralAPI\NCentralAPI.php(163): SoapClient->activeIssuesList(Array)
+ // #2 C:\xampp\htdocs\NcentralAPI\soapAPICaller.php(9): NCentralAPI->getActiveIssues()
+ // #3 C:\xampp\htdocs\NcentralAPI\index.php(10): include('C:\\xampp\\htdocs...')
+ // #4 {main} thrown in C:\xampp\htdocs\NcentralAPI\NCentralAPI.php on line 163
