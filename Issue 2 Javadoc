@@ -1,0 +1,34 @@
+// This function doesn't work.
+    public function getCustomerAndSitesList(){
+        $params = array(
+            'username' => $this->username,
+            'password' => $this->password,
+            'settings' => array(
+                array('Key' => 'listSOs', 'Value' => "false")
+                )
+        );
+        return $this->soapClient->customerList($params);
+    }
+
+// This function works, changed Key to key and Value to value.
+    public function getCustomerAndSitesList(){
+        $params = array(
+            'username' => $this->username,
+            'password' => $this->password,
+            'settings' => array(
+                array('key' => 'listSOs', 'value' => "false")
+                )
+        );
+        return $this->soapClient->customerList($params);
+    }
+
+Functions which have this mistake in the Javadoc:
+activeIssuesList()
+customerAdd()
+customerList()
+deviceGet()
+deviceGetStatus()
+deviceList()
+jobStatusList()
+soAdd()
+userAdd()
