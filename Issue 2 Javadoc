@@ -7,7 +7,10 @@
                 array('Key' => 'listSOs', 'Value' => "false")
                 )
         );
+        // Here we call the customList method which can be seen in the javadoc:
+        // https://ncentral.weritech.nl/dms/javadoc/index.html
         return $this->soapClient->customerList($params);
+        
     }
 
 // This function works, changed Key to key and Value to value.
