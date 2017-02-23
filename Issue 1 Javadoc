@@ -1,4 +1,5 @@
-// TODO: Attempt to login & recreate with productadmin credentials 
+// Logged in with productadmin credentials and didnt receive exception. 
+
  
  // Succesfully returns a list of issues corresponding to customer with ID 152
  public function getActiveIssues(){
