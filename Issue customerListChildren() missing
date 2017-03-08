@@ -55,4 +55,4 @@ foreach ($array as $item) {
 //string(53) "deviceListResponse deviceList(deviceList $parameters)"
 
 // The method customerListChildren() is missing.
-// It is also not defined in the WDSL : https://rmm.cloudnet.services/dms2/services2/ServerEI2?wsdl
+// It is also not defined in the WSDL : https://rmm.cloudnet.services/dms2/services2/ServerEI2?wsdl
