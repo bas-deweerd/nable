@@ -1,0 +1,58 @@
+//When calling:
+class api {
+    private $username;
+    private $password;
+    private $wsdl;
+    private $soapClient;
+
+    public function __construct() {
+        $this->username = 'productadmin@n-able.com';
+        $this->password = ''; // Removed for demonstration purposes
+
+        $this->wsdl = 'https://rmm.cloudnet.services/dms2/services2/ServerEI2?wsdl';
+        $this->soapClient = new Soapclient($this->wsdl, array(
+            'soap_version' => SOAP_1_2,
+            'trace' => TRUE
+                )
+        );
+    }
+    public function getAllAPIFunctions(){
+      return $this->soapClient->__getFunctions();
+    }
+}
+
+$api = new api();
+$array = $api->getAllAPIFunctions();
+        
+foreach ($array as $item) {
+  var_dump($item);
+  echo '<br />';
+}
+
+//I get the following result
+//string(62) "jobStatusListResponse jobStatusList(jobStatusList $parameters)" 
+//string(104) "deviceAssetInfoExportDeviceResponse deviceAssetInfoExportDevice(deviceAssetInfoExportDevice $parameters)" 
+//string(80) "taskPauseMonitoringResponse taskPauseMonitoring(taskPauseMonitoring $parameters)" 
+//string(71) "activeIssuesListResponse activeIssuesList(activeIssuesList $parameters)" 
+//string(56) "customerAddResponse customerAdd(customerAdd $parameters)" 
+//string(83) "customerDeviceReportResponse customerDeviceReport(customerDeviceReport $parameters)" 
+//string(62) "mspaHeartbeatResponse mspaHeartbeat(mspaHeartbeat $parameters)" 
+//string(50) "deviceGetResponse deviceGet(deviceGet $parameters)" 
+//string(68) "lastExportResetResponse lastExportReset(lastExportReset $parameters)" 
+//string(86) "deviceAssetInfoExportResponse deviceAssetInfoExport(deviceAssetInfoExport $parameters)" 
+//string(65) "versionInfoGetResponse versionInfoGet(versionInfoGet $parameters)" 
+//string(92) "acknowledgeNotificationResponse acknowledgeNotification(acknowledgeNotification $parameters)" 
+//string(44) "userAddResponse userAdd(userAdd $parameters)" 
+//string(68) "deviceGetStatusResponse deviceGetStatus(deviceGetStatus $parameters)" 
+//string(83) "devicePropertyModifyResponse devicePropertyModify(devicePropertyModify $parameters)" 
+//string(92) "customerDeviceReportGetResponse customerDeviceReportGet(customerDeviceReportGet $parameters)" 
+//string(83) "taskResumeMonitoringResponse taskResumeMonitoring(taskResumeMonitoring $parameters)" 
+//string(38) "SOAddResponse SOAdd(SOAdd $parameters)" 
+//string(89) "PSACredentialsValidateResponse PSACredentialsValidate(PSACredentialsValidate $parameters)" 
+//string(140) "deviceAssetInfoExportDeviceWithSettingsResponse deviceAssetInfoExportDeviceWithSettings(deviceAssetInfoExportDeviceWithSettings $parameters)" 
+//string(77) "devicePropertyListResponse devicePropertyList(devicePropertyList $parameters)" 
+//string(59) "customerListResponse customerList(customerList $parameters)" 
+//string(53) "deviceListResponse deviceList(deviceList $parameters)"
+
+// The method customerListChildren() is missing.
+// It is also not defined in the WDSL : https://rmm.cloudnet.services/dms2/services2/ServerEI2?wsdl
